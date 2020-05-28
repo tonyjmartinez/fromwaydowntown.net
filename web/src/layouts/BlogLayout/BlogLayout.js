@@ -1,4 +1,8 @@
+import { Link, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
+
 const BlogLayout = ({ children }) => {
+  const { logIn } = useAuth()
   return (
     <>
       <header>
@@ -6,6 +10,11 @@ const BlogLayout = ({ children }) => {
         <nav>
           <ul>
             <li>Something</li>
+            <li>
+              <a href="#" onClick={logIn}>
+                Log In
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
