@@ -9,6 +9,7 @@ const BlogPost = ({ post }) => {
         </h2>
       </header>
       <div>{post.body}</div>
+      <img src={post.url} />
     </article>
   )
 }

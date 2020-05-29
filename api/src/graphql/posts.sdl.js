@@ -3,6 +3,7 @@ export const schema = gql`
     id: Int!
     title: String!
     body: String!
+    url: String!
     createdAt: DateTime!
   }
 
@@ -14,6 +15,7 @@ export const schema = gql`
   input CreatePostInput {
     title: String!
     body: String!
+    url: String!
   }
 
   input UpdatePostInput {

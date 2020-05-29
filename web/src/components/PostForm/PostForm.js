@@ -6,6 +6,8 @@ import {
   TextField,
   Submit,
 } from '@redwoodjs/web'
+import { useState } from 'react'
+import ReactFilestack from 'filestack-react'
 
 const CSS = {
   label: 'block mt-6 text-gray-700 font-semibold',
@@ -18,8 +20,15 @@ const CSS = {
 }
 
 const PostForm = (props) => {
+  const [url, setUrl] = useState(props?.image?.url)
+
   const onSubmit = (data) => {
-    props.onSave(data, props?.post?.id)
+    const dataWithUrl = Object.assign(data, { url })
+    props.onSave(dataWithUrl, props?.image?.id)
+  }
+
+  const onFileUpload = (response) => {
+    setUrl(response.filesUploaded[0].url)
   }
 
   return (
@@ -63,6 +72,32 @@ const PostForm = (props) => {
           validation={{ required: true }}
         />
         <FieldError name="body" className={CSS.errorMessage} />
+        <ReactFilestack
+          apikey={process.env.REDWOOD_ENV_FILESTACK_API_KEY}
+          onSuccess={onFileUpload}
+          componentDisplayMode={{ type: 'immediate' }}
+          actionOptions={{ displayMode: 'inline', container: 'picker' }}
+        />
+        <div
+          id="picker"
+          style={{
+            marginTop: '2rem',
+            height: '20rem',
+            display: url ? 'none' : 'block',
+          }}
+        ></div>
+        {url && (
+          <div>
+            <img src={url} style={{ display: 'block', margin: '2rem 0' }} />
+            <a
+              href="#"
+              onClick={() => setUrl(null)}
+              className="bg-blue-600 text-white hover:bg-blue-700 text-xs rounded px-4 py-2 uppercase font-semibold tracking-wide"
+            >
+              Replace Image
+            </a>
+          </div>
+        )}
 
         <div className="mt-8 text-center">
           <Submit
