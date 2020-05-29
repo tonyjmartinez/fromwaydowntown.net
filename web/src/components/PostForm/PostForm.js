@@ -23,8 +23,10 @@ const PostForm = (props) => {
   const [url, setUrl] = useState(props?.image?.url)
 
   const onSubmit = (data) => {
+    console.log('data', data)
+    console.log('props', props)
     const dataWithUrl = Object.assign(data, { url })
-    props.onSave(dataWithUrl, props?.image?.id)
+    props.onSave(dataWithUrl, props?.post?.id)
   }
 
   const onFileUpload = (response) => {

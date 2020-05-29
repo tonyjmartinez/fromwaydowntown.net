@@ -21,6 +21,7 @@ export const schema = gql`
   input UpdatePostInput {
     title: String
     body: String
+    url: String
   }
 
   type Mutation {

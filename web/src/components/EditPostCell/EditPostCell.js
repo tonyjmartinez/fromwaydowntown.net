@@ -8,6 +8,7 @@ export const QUERY = gql`
       id
       title
       body
+      url
       createdAt
     }
   }
@@ -30,6 +31,8 @@ export const Success = ({ post }) => {
   })
 
   const onSave = (input, id) => {
+    console.log('input', input)
+    console.log('id', id)
     updatePost({ variables: { id, input } })
   }
 
