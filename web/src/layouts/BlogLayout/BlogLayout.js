@@ -1,7 +1,7 @@
 import { useAuth } from '@redwoodjs/auth'
 
 const BlogLayout = ({ children }) => {
-  const { logIn } = useAuth()
+  const { logIn, logOut, isAuthenticated } = useAuth()
   return (
     <>
       <header>
@@ -10,8 +10,8 @@ const BlogLayout = ({ children }) => {
           <ul>
             <li>Something</li>
             <li>
-              <a href="#" onClick={logIn}>
-                Log In
+              <a href="#" onClick={isAuthenticated ? logOut : logIn}>
+                {isAuthenticated ? 'Log Out' : 'Log In'}
               </a>
             </li>
           </ul>
