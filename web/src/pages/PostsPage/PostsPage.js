@@ -1,11 +1,14 @@
 import PostsLayout from 'src/layouts/PostsLayout'
 import PostsCell from 'src/components/PostsCell'
+import BlogLayout from 'src/layouts/BlogLayout'
 
 const PostsPage = () => {
   return (
-    <PostsLayout>
-      <PostsCell />
-    </PostsLayout>
+    <BlogLayout>
+      <PostsLayout>
+        <PostsCell />
+      </PostsLayout>
+    </BlogLayout>
   )
 }
 
