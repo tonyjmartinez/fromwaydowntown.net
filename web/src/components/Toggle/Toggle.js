@@ -1,22 +1,67 @@
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 
-const ToggleDiv = styled.div`
-  top: -0.25rem;
-  left: -0.25rem;
-  transition: all 0.3s ease-in-out;
+const CheckBoxWrapper = styled.div`
+  position: relative;
 `
+const CheckBoxLabel = styled.label`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 35px;
+  border-radius: 3px;
+  border: solid 1px black;
+  background-color: white;
+  cursor: pointer;
+  &::after {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 35px;
+    text-align: center;
+    content: 'L';
+    color: white;
+    display: block;
+    width: 31px;
+    height: 35px;
+    /*     margin: 3px;
+ */
+    background: #242432;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+  }
+`
+const CheckBox = styled.input`
+  opacity: 0;
+  z-index: 1;
+  border-radius: 15px;
+  width: 60px;
+  height: 35px;
 
-const Toggle = () => {
+  &:checked + ${CheckBoxLabel} {
+    background: white;
+    &::after {
+      content: 'D';
+      display: block;
+      width: 31px;
+      height: 35px;
+      margin-left: 30px;
+      transition: 0.2s;
+    }
+  }
+`
+const Toggle = ({ value, toggleValue }) => {
   return (
-    <div className="flex items-center justify-center w-full mb-24">
-      <label htmlFor="toogleA" className="flex items-center cursor-pointer">
-        <div className="relative">
-          <input id="toogleA" type="checkbox" className="hidden" />
-          <div className="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
-          <div className="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0"></div>
-        </div>
-        <div className="ml-3 text-gray-700 font-medium">Toggle Me!</div>
-      </label>
+    <div>
+      <CheckBoxWrapper>
+        <CheckBox
+          id="checkbox"
+          type="checkbox"
+          value={value}
+          onChange={toggleValue}
+          checked={value}
+        />
+        <CheckBoxLabel htmlFor="checkbox" />
+      </CheckBoxWrapper>
     </div>
   )
 }
