@@ -56,7 +56,6 @@ const Toggle = ({ value, toggleValue }) => {
         <CheckBox
           id="checkbox"
           type="checkbox"
-          value={value}
           onChange={toggleValue}
           checked={value}
         />

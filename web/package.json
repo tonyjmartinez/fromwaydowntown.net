@@ -6,6 +6,7 @@
     "defaults"
   ],
   "dependencies": {
+    "@material-ui/icons": "^4.9.1",
     "@redwoodjs/auth": "^0.7.0",
     "@redwoodjs/router": "^0.7.0",
     "@redwoodjs/web": "^0.7.0",

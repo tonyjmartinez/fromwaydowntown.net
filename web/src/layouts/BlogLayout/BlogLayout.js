@@ -13,7 +13,7 @@ const BlogLayout = ({ children, context }) => {
     <div className={isDarkMode ? 'mode-dark' : null}>
       <Header />
 
-      <div style={{ marginTop: '250px' }}>{children}</div>
+      <div style={{ marginTop: '100px' }}>{children}</div>
       <BottomNav />
     </div>
   )
